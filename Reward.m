@@ -20,7 +20,7 @@ function [R,Terminal]= Reward(robot,a,goal,obs)
 end
 
 function d = D(robot, goal)
-    d = sqrt((robot.x - goal.x)^2 + (robot.y - goal.y));
+    d = sqrt((robot.x - goal.x)^2 + (robot.y - goal.y)^2);
 end
 
 
