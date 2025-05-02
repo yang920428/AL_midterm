@@ -1,9 +1,9 @@
 function [opt_a,Wt,J]= Q_learning(a,W,robot,goal,laser,R,terminal)
 
     %% WRITE YOUR CODE HERE
-    alpha = 0.01;
+    alpha = 1e-4;
     gamma = 0.9;
-    epsilon = 0.1;
+    epsilon = 0.3;
     num_actions = 5;
 
     f_current = features(robot, goal, laser, a);
@@ -33,6 +33,6 @@ function [opt_a,Wt,J]= Q_learning(a,W,robot,goal,laser,R,terminal)
             f = features(robot, goal, laser, a_candidate);
             Q_eval(a_candidate) = Wt' * f;
         end
-        [~, opt_a] = max(Q_eval);
+    [~, opt_a] = max(Q_eval);
     end
 end

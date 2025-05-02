@@ -34,7 +34,8 @@ for Iteration=1:1
     Dir_r=4;
     for i=1:robot_N
         if Eff_robot(i)==1
-        plot(position(i,1),position(i,2),'go');hold on;     
+        plot(position(i,1),position(i,2),'go');hold on;  
+        plot(150, 250, "ro");hold on;
         line_x=[position(i,1) position(i,1)+Dir_r*cos(position(i,3))];
         line_y=[position(i,2) position(i,2)+Dir_r*sin(position(i,3))];
         line(line_x,line_y,'Color',[0 1 0]);   
@@ -50,8 +51,8 @@ for Iteration=1:1
     X(Iteration,:)=X_data;
     Coverage(Iteration,1)=Coverage_rate;
     hold off;
-    Eff_N=sum(Eff_robot);hold on; 
-    %title(['Iteration=',num2str(K),', Coverage=',num2str(Coverage_rate),', Ratio=',num2str(Ratio),', Overlap=',num2str(OL_Coverage_rate), ', Eff_N=',num2str(Eff_N)])
-    %fprintf('coverage   =%f\nRatio=%f\noverlap    =%f\n',Coverage_rate,Ratio,OL_Coverage_rate);
-    %title([ 'Coverage=',num2str(Coverage_rate)]);
+    Eff_N=sum(Eff_robot);hold on;
+    % title(['Iteration=',num2str(K),', Coverage=',num2str(Coverage_rate),', Ratio=',num2str(Ratio),', Overlap=',num2str(OL_Coverage_rate), ', Eff_N=',num2str(Eff_N)])
+    % fprintf('coverage   =%f\nRatio=%f\noverlap    =%f\n',Coverage_rate,Ratio,OL_Coverage_rate);
+    % title([ 'Coverage=',num2str(Coverage_rate)]);
 end
