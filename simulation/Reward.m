@@ -18,6 +18,7 @@ function [R,Terminal]= Reward(robot,a,goal,obs)
         Terminal = 1;
         R = 10;
     end
+
 end
 
 

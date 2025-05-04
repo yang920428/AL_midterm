@@ -1,11 +1,11 @@
 clear all; clc; close all;
 
-Episode=20;
+Episode=10;
 
 goal.x=150; goal.y=250; % goal location
 obs.x=150; obs.y=150; % obstacle location
 robot0.x=150; robot0.y=50; robot0.t=1.57; % % robot initial location
-W=ones(4,1); % Q-learning weighting
+W=ones(7,1); % Q-learning weighting
 dt=0.1; % delta t
 CoverMODE=2; M=1;m=1; Eff_robot=1; % GetLaser parameters
 
@@ -27,6 +27,6 @@ for Epi=1:Episode
         robot_t_1.x=robot_t.x; robot_t_1.y=robot_t.y; robot_t_1.t=robot_t.t;    
         [a,Wt,J]= Q_learning(a,W,robot_t,goal,laser,R,Terminal);
         W=Wt;
-        title(['Episode=',num2str(Epi)]);hold off;
+        title(['Episode=',num2str(Epi)]);drawnow;hold off;
     end   
 end

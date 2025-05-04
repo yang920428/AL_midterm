@@ -3,7 +3,7 @@ function [opt_a,Wt,J]= Q_learning(a,W,robot,goal,laser,R,terminal)
     %% WRITE YOUR CODE HERE
     alpha = 1e-4;
     gamma = 0.9;
-    epsilon = 0.3;
+    epsilon = 0.1;
     num_actions = 5;
 
     f_current = features(robot, goal, laser, a);
