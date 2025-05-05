@@ -20,31 +20,23 @@ function [f] = features(robot, goal, laser, a)
         f4 = angle_to_goal;
     end
     
-    % 3. 強目標吸引特徵
-    % goal_attraction = 10/(dist_to_goal + 1); % 距離越近值越大
-    
-    % 4. 障礙物特徵
-    front_laser = laser(idx) / 100;
-    f_obstacle = -0.5 / (front_laser + 0.3); 
-    
-    % 5. 方向對齊獎勵
-    alignment_bonus = cos(angle_to_goal); % 對準目標時接近1
+    cover = (laser(idx) / 100 + min(idx) / 100);
 
 
-    action_value = 0;
-    if abs(angle_to_goal) < 0.5  % 如果目標基本在前方
+    w = 0;
+    if cos(angle_to_goal) >  cos(15 * pi/ 180)
         if idx == 3
-            action_value = 1;
+            w = 1;
         else
-            action_value = 0.2;
+            w = 0.2;
         end
-    elseif angle_to_goal > 0  % 目標在左侧
+    elseif angle_to_goal > 0  
         if idx >= 4
-            action_value = 0.7;
+            w = 0.7;
         end
-    else  % 目標在右側
+    else
         if idx <= 2
-            action_value = 0.7;
+            w = 0.7;
         end
     end
     
@@ -53,8 +45,7 @@ function [f] = features(robot, goal, laser, a)
         dist_to_goal;       
         angle_to_goal;       
         f4;                    
-        % f_obstacle;             % 弱化的障礙物懲罰
-        % alignment_bonus;
-        % action_value;
+        w;
+        -1/(cover + 0.01);
     ];
 end
