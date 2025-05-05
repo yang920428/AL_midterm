@@ -1,7 +1,7 @@
 function [opt_a,Wt,J]= Q_learning(a,W,robot,goal,laser,R,terminal)
 
     %% WRITE YOUR CODE HERE
-    alpha = 3e-5; % 調參數人生....
+    alpha = 5e-4; % 調參數人生....
     gamma = 0.9;
     epsilon = 0.1;
     num_actions = 5;

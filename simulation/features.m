@@ -1,5 +1,5 @@
 function [f] = features(robot, goal, laser, a)
-    dist_to_goal = sqrt((robot.x - goal.x)^2 + (robot.y - goal.y)^2);
+    dist_to_goal = sqrt((robot.x - goal.x)^2 + (robot.y - goal.y)^2) / 100;
     angle_to_goal = atan2(goal.y - robot.y, goal.x - robot.x) - robot.t;
     angle_to_goal = wrapToPi(angle_to_goal);
     
@@ -49,12 +49,12 @@ function [f] = features(robot, goal, laser, a)
     end
     
     f = [
-        1;                      % 偏置項
-        dist_to_goal;        % 強化目標吸引
-        angle_to_goal;       % 方向對齊獎勵
-        f4;                     % 作業要求特徵(簡化)
+        1;                     
+        dist_to_goal;       
+        angle_to_goal;       
+        f4;                    
         % f_obstacle;             % 弱化的障礙物懲罰
-        % alignment_bonus;
+        alignment_bonus;
         % action_value;
     ];
 end

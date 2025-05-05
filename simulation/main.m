@@ -1,11 +1,11 @@
 clear all; clc; close all;
 
-Episode=10;
+Episode=20;
 
 goal.x=150; goal.y=250; % goal location
 obs.x=150; obs.y=150; % obstacle location
 robot0.x=150; robot0.y=50; robot0.t=1.57; % % robot initial location
-W=ones(4,1); % Q-learning weighting
+W=ones(5,1); % Q-learning weighting
 dt=0.1; % delta t
 CoverMODE=2; M=1;m=1; Eff_robot=1; % GetLaser parameters
 

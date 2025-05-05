@@ -9,12 +9,12 @@ function [R,Terminal]= Reward(robot,a,goal,obs)
         R=-1*10;   
     % obstacle 
     end
-    if (Distance(robot, obs) < 10)
+    if (sqrt((robot.x - obs.x)^2 + (robot.y - obs.y)^2) < 10)
         Terminal = 1;
         R = -10;
     end
     % goal
-    if (Distance(robot, goal) < 10)
+    if (sqrt((robot.x - goal.x)^2 + (robot.y - goal.y)^2) < 10)
         Terminal = 1;
         R = 10;
     end
