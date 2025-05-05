@@ -54,7 +54,7 @@ function [f] = features(robot, goal, laser, a)
         angle_to_goal;       
         f4;                    
         % f_obstacle;             % 弱化的障礙物懲罰
-        alignment_bonus;
+        % alignment_bonus;
         % action_value;
     ];
 end
