@@ -8,32 +8,24 @@ class Robot:
         self.y = y
         self.t = t  # 朝向角度（度）
         self.w = w
-
-    def move_forward(self, step=1):
-        # 依朝向移動
-        theta = np.radians(self.angle())
-        self.x += step * np.sin(theta)
-        self.y += step * np.cos(theta)
         
-    def turn_around(self, step=1, a = 0):
+    def move(self, a = 0):
+        dt = 0.1
         if a == 2:
             self.w = 0
         elif a == 1:
-            self.w = -15
+            self.w = np.deg2rad(-15)
         elif a == 3:
-            self.w = 15
+            self.w = np.deg2rad(15)
         elif a == 0:
-            self.w = -30
-        else:
-            self.w = 30
-        self.t += step * self.w 
-    
-    def angle(self):
-        if self.t >= 180:
-            self.t = self.t - 360
-        elif self.y <= -181:
-            self.t = self.t + 360
-        return self.t
+            self.w = np.deg2rad(-30)
+        elif a == 4:
+            self.w = np.deg2rad(30)
+
+        # theta = np.radians(self.angle())
+        self.x=self.x+15 *np.cos(self.t)*dt
+        self.y=self.y+15 *np.sin(self.t)*dt
+        self.t=self.t+self.w*dt
 
 class Obstacle:
     def __init__(self, x, y, r):

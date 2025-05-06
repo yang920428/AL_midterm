@@ -8,7 +8,7 @@ def laser(robot, obs):
     result = []
 
     for angle in angles:
-        theta = np.radians(robot.t + angle)
+        theta = robot.t + np.deg2rad(angle)
         x0, y0 = robot.x, robot.y
         dist = max_range
 

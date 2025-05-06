@@ -32,8 +32,7 @@ for Epi in range(Episode):
     print(f'Episode={Epi+1}')  # Python is 0-based but we display 1-based like MATLAB
     while not Terminal:
         robot_t = robot_t_1
-        robot_t.turn_around(0.1, a)
-        robot_t.move_forward(15 * 0.1)
+        robot_t.move(a)
         R, Terminal = reward(robot_t, a, obs, goal)
         
         # Assuming GetLaser is implemented elsewhere
@@ -44,4 +43,4 @@ for Epi in range(Episode):
         
         draw_map(robot_t, obs, ax) 
         W = Wt
-        print(W)
+        # print(W)

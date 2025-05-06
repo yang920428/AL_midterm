@@ -13,7 +13,7 @@ def plot_laser(robot, obs, ax):
     angles = [-30, -15, 0, 15, 30]
 
     for d, a in zip(distances, angles):
-        theta = np.radians(robot.t + a)
+        theta = robot.t + np.deg2rad(a)
         x0, y0 = robot.x, robot.y
         x1 = x0 + d * np.sin(theta)
         y1 = y0 + d * np.cos(theta)
