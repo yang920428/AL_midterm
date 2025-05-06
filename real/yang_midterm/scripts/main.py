@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import numpy as np
 from q_learning import Q_learning
 from reward import reward

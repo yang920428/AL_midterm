@@ -1,0 +1,36 @@
+# Python 編譯產物
+__pycache__/
+*.py[cod]
+*.so
+*.pyd
+
+# 環境資料夾
+env/
+venv/
+.venv/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# VSCode 設定檔
+.vscode/
+
+# 系統垃圾
+.DS_Store
+Thumbs.db
+
+# 機密資料或測試輸出
+*.log
+*.out
+*.bak
+*.swp
+*.tmp
+*.pdf
+*.jar
+
+# 如果你用的是 diffusers / checkpoints
+checkpoints/
+logs/
+results/
+新增資料夾/
+wandb/
