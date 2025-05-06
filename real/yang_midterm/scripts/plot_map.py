@@ -11,12 +11,13 @@ import numpy as np
 def plot_laser(robot, obs, ax):
     distances = laser(robot, obs)
     angles = [-30, -15, 0, 15, 30]
+    angles = np.deg2rad(angles)
 
     for d, a in zip(distances, angles):
-        theta = robot.t + np.deg2rad(a)
+        theta = robot.t + a
         x0, y0 = robot.x, robot.y
-        x1 = x0 + d * np.sin(theta)
-        y1 = y0 + d * np.cos(theta)
+        x1 = x0 + d * np.cos(theta)
+        y1 = y0 + d * np.sin(theta)
         ax.plot([x0, x1], [y0, y1], color='blue')
 
 # 畫整張地圖

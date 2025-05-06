@@ -24,7 +24,7 @@ def features(robot, goal, laser, a):
     cover = (laser[idx] / 100 + np.min([idx]) / 100)
 
     w = 0
-    if np.cos(angle_to_goal) > np.cos(15 * np.pi / 180):
+    if np.cos(angle_to_goal) > np.cos(np.deg2rad(15)):
         if idx == 2:  # Corresponds to MATLAB idx=3
             w = 1
         else:

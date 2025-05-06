@@ -12,7 +12,7 @@ Episode = 20
 
 goal = Goal(150, 250)
 obs = Obstacle(150, 150, 10)
-robot0 = Robot(150, 50, 0, 0)
+robot0 = Robot(150, 50, np.pi/2, 0)
 W = np.ones(6)
 dt = 0.1
 CoverMODE = 2
