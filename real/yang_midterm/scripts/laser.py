@@ -13,8 +13,8 @@ def laser(robot, obs):
         dist = max_range
 
         for r in range(1, max_range + 1):
-            x = x0 + r * np.sin(theta)
-            y = y0 + r * np.cos(theta)
+            x = x0 + r * np.cos(theta)
+            y = y0 + r * np.sin(theta)
 
             if x < 0 or x > 300 or y < 0 or y > 300:
                 dist = r
