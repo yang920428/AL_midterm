@@ -53,7 +53,7 @@ def scan_callback(msg):
                 desired_indices.append(idx)
 
     # 取得五個對應角度的距離資料
-    laser_data = [msg.ranges[i] for i in desired_indices]
+    laser_data = [100 * msg.ranges[i] for i in desired_indices]
     # print(laser_data)
     laser_ready = True
     
@@ -64,6 +64,7 @@ rospy.init_node('q_learning_controller')
 rospy.Subscriber('/scan', LaserScan, scan_callback)
 pub = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
 rate = rospy.Rate(10)  # 每 0.1 秒
+# rospy.spin()
 
 
 for Epi in range(Episode):
@@ -72,9 +73,10 @@ for Epi in range(Episode):
     a = 0  # Python uses 0-based indexing for actions
     print(f'Episode={Epi+1}')  # Python is 0-based but we display 1-based like MATLAB
     while not Terminal and not rospy.is_shutdown():
-        # if not laser_ready:
-        #     continue
-        # laser_ready = False
+        if not laser_ready:
+            continue
+        laser_ready = False
+        print("laser:")
         print(laser_data)
         robot_t = robot_t_1
         robot_t.move(a)
@@ -97,6 +99,8 @@ for Epi in range(Episode):
             twist.angular.z = 0.524
         pub.publish(twist)
         
+        # print(twist.linear.x)
+        # print(twist.angular.z)
         # Assuming GetLaser is implemented elsewhere
         # laser_data = laser(robot_t, obs)
         
@@ -105,6 +109,6 @@ for Epi in range(Episode):
         
         # draw_map(robot_t, obs, ax) 
         W = Wt
-        print(W)
+        # print(W)
         rate.sleep()
         #
