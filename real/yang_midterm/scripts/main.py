@@ -19,7 +19,7 @@ laser_data = [0.0] * 5  # 或用 None 預設都為 0.0 公尺
 
 Episode = 20
 
-goal = Goal(150, 250)
+goal = Goal(0, 184)
 obs = Obstacle(150, 150, 30)
 robot0 = Robot(150, 50, np.pi/2, 0)
 W = np.ones(6)
@@ -97,6 +97,8 @@ for Epi in range(Episode):
         else:
             twist.linear.x = 0.15
             twist.angular.z = 0.524
+
+        twist.linear.x = twist.linear.x * 0.5
         pub.publish(twist)
         
         # print(twist.linear.x)
@@ -107,7 +109,7 @@ for Epi in range(Episode):
         robot_t_1 = copy.copy(robot_t)
         a, Wt, J = Q_learning(a, W, robot_t, goal, laser_data, R, Terminal)
         
-        # draw_map(robot_t, obs, ax) 
+        draw_map(robot_t, obs, ax) 
         W = Wt
         # print(W)
         rate.sleep()

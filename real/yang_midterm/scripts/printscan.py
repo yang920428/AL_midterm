@@ -10,7 +10,7 @@ file = open("laser.txt", "w")
 def callback_timer(event):
     global counter, file
     counter += 1
-    rospy.loginfo("sample file called : %d\t times", counter)
+    # rospy.loginfo("sample file called : %d\t times", counter)
     if counter > 300:
         file.close()
         rospy.signal_shutdown("Reached 300 samples")
@@ -20,6 +20,7 @@ def scan_callback(scan):
     for i in range(len(scan.ranges)):
         degree = (scan.angle_min + scan.angle_increment * i) * 180.0 / math.pi
         if scan.ranges[i] != 0.0 and not math.isinf(scan.ranges[i]):
+            print(f"{degree:4.1f} {scan.ranges[i]:5.3f}\n")
             file.write(f"{degree:4.1f} {scan.ranges[i]:5.3f}\n")
 
 def listener():

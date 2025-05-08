@@ -15,7 +15,7 @@ from laser import laser
 
 def reward(robot, action, laser, goal):
     
-    if laser[2] < 20:
+    if laser[2] < 10:
         return -1 / (laser[2] + 0.1), 1
     if goal.arrived_goal(robot.x, robot.y):
         return 10, 1
