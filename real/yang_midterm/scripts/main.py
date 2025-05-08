@@ -66,13 +66,18 @@ pub = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
 rate = rospy.Rate(10)  # 每 0.1 秒
 # rospy.spin()
 
-
+lock = False
 for Epi in range(Episode):
+    if (lock):
+        break
     Terminal = False
     robot_t_1 = copy.copy(robot0)
     a = 0  # Python uses 0-based indexing for actions
     print(f'Episode={Epi+1}')  # Python is 0-based but we display 1-based like MATLAB
     while not Terminal and not rospy.is_shutdown():
+        if (Terminal == 2):
+            lock = True
+            break
         if not laser_ready:
             continue
         laser_ready = False

@@ -18,7 +18,7 @@ def reward(robot, action, laser, goal):
     if laser[2] < 10:
         return -1 / (laser[2] + 0.1), 1
     if goal.arrived_goal(robot.x, robot.y):
-        return 10, 1
+        return 10, 2
     # laser_length = laser(robot, obs)[action]
     # goal_distance = ((robot.x-goal.x)**2 + (robot.x-goal.x)**2)**(1/2)
     return -0.05, 0
