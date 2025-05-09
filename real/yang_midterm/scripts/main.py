@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 import numpy as np
 from q_learning import Q_learning
 from reward import reward
@@ -114,7 +115,7 @@ for Epi in range(Episode):
         robot_t_1 = copy.copy(robot_t)
         a, Wt, J = Q_learning(a, W, robot_t, goal, laser_data, R, Terminal)
         
-        draw_map(robot_t, obs, ax) 
+        # draw_map(robot_t, obs, ax) 
         W = Wt
         # print(W)
         rate.sleep()
